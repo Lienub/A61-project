@@ -1,7 +1,11 @@
 const world = 'world';
 
 export function hello(who: string = world): void {
-  console.log('hello', who);
+  console.log(`Hello ${who}! `);
 }
 
-hello("zizi");
+function main(): number {
+  return 1;
+}
+
+main();
