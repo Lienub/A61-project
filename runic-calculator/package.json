@@ -4,7 +4,11 @@
   "type": "module",
   "private": true,
   "devDependencies": {
-    "typescript": "^5.4.5"
+    "@types/node": "*",
+    "eslint": "^8.57.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.3",
+    "typescript-eslint": "^7.3.1"
   },
   "engines": {
     "node": ">=20.0.0",
@@ -15,13 +19,12 @@
     "start": "node dist/index.js",
     "dev": "npm run build && npm run start",
     "clear": "rm -rf dist && rm -rf node_modules && rm -rf package-lock.json",
-    "test": "npm run build && npx bats acceptance-tests/*bats"
-    },
+    "test": "npm run build && npx bats acceptance-tests/*bats",
+    "lint": "eslint . --ext .ts",
+    "lint:fix": "eslint . --ext .ts --fix"
+  },
   "dependencies": {
     "bats": "^1.11.0",
-    "@types/node": "20.12.12",
-    "prettier": "3.2.5",
-    "tsx": "4.11.0",
-    "typescript": "5.4.5"
+    "tsx": "4.11.0"
   }
 }
