@@ -51,6 +51,11 @@ cd projet-a61/runic-calculator/
 npm run test
 ```
 
+### Vérifier qualité du code
+```bash
+npm run lint
+```
+
 ### Autres
 ```bash
 # clear le projet
