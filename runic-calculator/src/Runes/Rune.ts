@@ -1,11 +1,7 @@
-import { Convert, RunicOperation } from "../RunicOperation/RunicOperation";
-
-export enum RunicSymbols {
-    FEOH = 'ᚠ',
-    URUZ = 'ᚢ',
-    THURISAZ = 'ᚦ',
-    ANSUZ = 'ᚨ'
-}
+import { Convert } from "../commands/Convert";
+import { RunicOperation } from "../commands/_operation";
+import { Rune } from "./_rune";
+import { RunicSymbols } from "../enums/RunicSymbols";
 
 export function getRune(symbol: string) : Rune {
     switch (symbol) {
@@ -20,11 +16,6 @@ export function getRune(symbol: string) : Rune {
         default:
             throw new Error("Incompatible symbol");
     }
-}
-
-export abstract class Rune {
-    public abstract get decimal() : number;
-    public abstract get text(): string;
 }
 
 export class Feoh extends Rune {

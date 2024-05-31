@@ -1,5 +1,6 @@
-import { RuneList } from "./class/Runes/RuneList";
-import { getOperation } from "./class/RunicOperation/RunicOperation";
+import { RuneList } from "./Runes/RuneList";
+import { getOperation } from "./commands/commandsFactory";
+import { RunicOperation } from "./commands/_operation";
 
 const args = process.argv.slice(2);
 if (args.length < 2) {

@@ -1,5 +1,8 @@
-import { Convert, Add, RunicOperation } from "../RunicOperation/RunicOperation";
-import { Rune, getRune } from "./Rune";
+import { Convert } from "../commands/Convert";
+import { Add } from "../commands/Add";
+import { Rune } from "./_rune";
+import { getRune } from "./Rune";
+import { RunicOperation } from "../commands/_operation";
 
 export class RuneList {
     operation: RunicOperation;
