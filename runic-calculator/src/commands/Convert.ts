@@ -35,11 +35,11 @@ export class Convert extends RunicOperation {
             return rune instanceof Gebo;
         });
 
-        if(runeWithRaidhoInstance) {
+        if(runeWithRaidhoInstance && runeWithRaidhoInstance.clan) {
             runeList = runeWithRaidhoInstance.clan.adjustRunesConvert(runeList);
         }
 
-        if(runeWithGeboInstance) {
+        if(runeWithGeboInstance && runeWithGeboInstance.clan) {
             return runeWithGeboInstance.clan.calculateRunes(runeList);
         }
 

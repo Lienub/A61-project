@@ -21,10 +21,14 @@
     "clear": "rm -rf dist && rm -rf node_modules && rm -rf package-lock.json",
     "test": "npm run build && npx bats acceptance-tests/*bats",
     "lint": "eslint . --ext .ts",
-    "lint:fix": "eslint . --ext .ts --fix"
+    "lint:fix": "eslint . --ext .ts --fix",
+    "test:unit": "yarn jest"
   },
   "dependencies": {
     "bats": "^1.11.0",
-    "tsx": "4.11.0"
+    "tsx": "4.11.0",
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2"
   }
 }

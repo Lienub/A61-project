@@ -38,7 +38,7 @@ export class Feoh extends Rune {
         return 'ᚠ';
     }
 
-    public override get clan(): Clan {
+    public override get clan(): Clan | null {
         return null;
     }
 }
@@ -52,7 +52,7 @@ export class Uruz extends Rune {
         return 'ᚢ';
     }
 
-    public override get clan(): Clan {
+    public override get clan(): Clan | null {
         return null;
     }
 }
@@ -66,7 +66,7 @@ export class Thurisaz extends Rune {
         return 'ᚦ';
     }
 
-    public override get clan(): Clan {
+    public override get clan(): Clan | null {
         return null;
     }
 }
@@ -80,7 +80,7 @@ export class Ansuz extends Rune {
         return 'ᚨ';
     }
 
-    public override get clan(): Clan {
+    public override get clan(): Clan | null {
         return null;
     }
 }
@@ -93,7 +93,7 @@ export class Raidho extends Rune {
     public override get text(): string {
         return 'ᚱ';
     }
-    public override get clan(): Clan {
+    public override get clan(): Clan | null {
         return new JokulClan();
     }
 }
@@ -107,7 +107,7 @@ export class Gebo extends Rune {
         return 'ᚷ';
     }
 
-    public override get clan(): Clan {
+    public override get clan(): Clan | null {
         return new Thorlaug();
     }
 }

@@ -38,11 +38,11 @@ export class JokulClan extends Clan {
 
 export class Thorlaug extends Clan {
     public override adjustRunesConvert(runeList: Rune[]): Rune[] {
-        return null;
+        return [];
     }
 
     public override adjustRunesAdd(runeList: Rune[], temp: Rune[]): Rune[][] {
-        return null;
+        return [[]];
     }
     public override calculateRunes(runeList: Rune[]): number {
 
