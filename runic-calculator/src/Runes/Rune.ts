@@ -1,8 +1,15 @@
-import { Convert } from "../commands/Convert";
-import { RunicOperation } from "../commands/_operation";
+import { Clan } from "../Clans/_clan";
 import { Rune } from "./_rune";
 import { RunicSymbols } from "../enums/RunicSymbols";
+import { JokulClan } from "../Clans/Clan";
 
+/**
+ * 
+ * This function will return the rune object based on the symbol.
+ * 
+ * @param symbol 
+ * @returns The rune object.
+ */
 export function getRune(symbol: string) : Rune {
     switch (symbol) {
         case RunicSymbols.FEOH:
@@ -13,6 +20,8 @@ export function getRune(symbol: string) : Rune {
             return new Thurisaz();
         case RunicSymbols.ANSUZ:
             return new Ansuz();
+        case RunicSymbols.RAIDHO:
+            return new Raidho();
         default:
             throw new Error("Incompatible symbol");
     }
@@ -26,6 +35,10 @@ export class Feoh extends Rune {
     public override get text(): string {
         return 'ᚠ';
     }
+
+    public override get clan(): Clan {
+        return null;
+    }
 }
 
 export class Uruz extends Rune {
@@ -35,6 +48,10 @@ export class Uruz extends Rune {
 
     public override get text(): string {
         return 'ᚢ';
+    }
+
+    public override get clan(): Clan {
+        return null;
     }
 }
 
@@ -46,6 +63,10 @@ export class Thurisaz extends Rune {
     public override get text(): string {
         return 'ᚦ';
     }
+
+    public override get clan(): Clan {
+        return null;
+    }
 }
 
 export class Ansuz extends Rune {
@@ -56,6 +77,21 @@ export class Ansuz extends Rune {
     public override get text(): string {
         return 'ᚨ';
     }
+
+    public override get clan(): Clan {
+        return null;
+    }
 }
 
+export class Raidho extends Rune {
+    public override get decimal(): number {
+        return 0;
+    }
 
+    public override get text(): string {
+        return 'ᚱ';
+    }
+    public override get clan(): Clan {
+        return new JokulClan();
+    }
+}

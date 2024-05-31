@@ -29,12 +29,12 @@ export class RuneList {
                 }
                 this.list.push(sublist);
             }
+            
         }
         else {
             throw new Error("Error");
         }
     }
-
 
     public get result(): number | string {
         return this.operation.listOperation(this.list);
@@ -64,6 +64,5 @@ export class RuneList {
         }
 
     }
-
 
 }

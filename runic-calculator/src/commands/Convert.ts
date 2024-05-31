@@ -1,27 +1,51 @@
 import { Rune } from "../Runes/_rune";
-import { Thurisaz } from "../Runes/Rune";
+import { Raidho, Thurisaz } from "../Runes/Rune";
 import { RunicOperation } from "./_operation"
 
 export class Convert extends RunicOperation {
-  public override runeOperation(previousRune: number, rune: Rune): number | string {
-      if (rune instanceof Thurisaz) {
-          return previousRune * rune.decimal;
-      } else {
-          return previousRune + rune.decimal;
-      }
-  }
+    /**
+     * 
+     * This function takes two runes and returns the value of the two runes combined.
+     * 
+     * @param previousRune 
+     * @param rune 
+     * @returns The value of the two runes combined.
+     */
+    public override runeOperation(previousRune: number, rune: Rune): number | string {
+        if (rune instanceof Thurisaz) {
+            return previousRune * rune.decimal;
+        } else {
+            return previousRune + rune.decimal;
+        }
+    }
 
-  public override listOperation(runeList: Rune[]): number | string {
-      let previous = 1;
-      let total = previous;
+    /**
+     * 
+     * This function takes a list of runes and returns the total value of the runes in the list.
+     * 
+     * @param runeList 
+     * @returns The total value of the runes in the list.
+     */
+    public override listOperation(runeList: Rune[]): number | string {
 
-      for (let i = 1; i < runeList.length; i++) {
-          let current = 0;
-          current = this.runeOperation(previous, runeList[i]) as number;
-          previous = current;
-          total += current;
-      }
+        const runeWithRaidhoInstance = runeList.find(rune => {
+            return rune instanceof Raidho;
+        });
 
-      return total;
-  }
+        if(runeWithRaidhoInstance) {
+            runeList = runeWithRaidhoInstance.clan.adjustRunesConvert(runeList);
+        }
+
+        let previous = 1;
+        let total = previous;
+
+        for (let i = 1; i < runeList.length; i++) {
+            let current = 0;
+            current = this.runeOperation(previous, runeList[i]) as number;
+            previous = current;
+            total += current;
+        }
+
+        return total;
+    }
 }

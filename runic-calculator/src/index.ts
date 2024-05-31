@@ -1,6 +1,5 @@
 import { RuneList } from "./Runes/RuneList";
 import { getOperation } from "./commands/commandsFactory";
-import { RunicOperation } from "./commands/_operation";
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -15,5 +14,3 @@ const runicInput = args[1];
 const runesList = new RuneList(runicInput, command);
 
 console.log(runesList.result);
-
-
