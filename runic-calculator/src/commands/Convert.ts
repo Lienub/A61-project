@@ -1,5 +1,5 @@
 import { Rune } from "../Runes/_rune";
-import { Raidho, Thurisaz } from "../Runes/Rune";
+import { Gebo, Raidho, Thurisaz } from "../Runes/Rune";
 import { RunicOperation } from "./_operation"
 
 export class Convert extends RunicOperation {
@@ -31,9 +31,16 @@ export class Convert extends RunicOperation {
         const runeWithRaidhoInstance = runeList.find(rune => {
             return rune instanceof Raidho;
         });
+        const runeWithGeboInstance = runeList.find(rune => {
+            return rune instanceof Gebo;
+        });
 
         if(runeWithRaidhoInstance) {
             runeList = runeWithRaidhoInstance.clan.adjustRunesConvert(runeList);
+        }
+
+        if(runeWithGeboInstance) {
+            return runeWithGeboInstance.clan.calculateRunes(runeList);
         }
 
         let previous = 1;

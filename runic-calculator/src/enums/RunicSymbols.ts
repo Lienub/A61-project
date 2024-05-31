@@ -3,5 +3,6 @@ export enum RunicSymbols {
     URUZ = 'ᚢ',
     THURISAZ = 'ᚦ',
     ANSUZ = 'ᚨ',
-    RAIDHO = 'ᚱ'
+    RAIDHO = 'ᚱ',
+    GEBO = 'ᚷ'
 }

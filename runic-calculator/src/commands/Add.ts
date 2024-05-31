@@ -1,5 +1,6 @@
-import { Raidho } from "../Runes/Rune";
+import { Gebo, Raidho } from "../Runes/Rune";
 import { Rune } from "../Runes/_rune";
+import { RunicSymbols } from "../enums/RunicSymbols";
 import { RunicOperation } from "./_operation"
 
 export class Add extends RunicOperation {
@@ -15,16 +16,31 @@ export class Add extends RunicOperation {
     public override runeOperation(runeLeft: Rune[], runeRight: Rune[]): string {
         const maxLength = Math.max(runeLeft.length, runeRight.length);
         let mergedRunes = '';
-
+    
         for (let i = 0; i < maxLength; i++) {
             const leftRune = runeLeft[runeLeft.length - 1 - i]?.text || '';
             const rightRune = runeRight[runeRight.length - 1 - i]?.text || '';
-            mergedRunes = rightRune + leftRune + mergedRunes;
+    
+            if (
+                runeRight[runeRight.length - 2 - i]?.text !== "" &&
+                runeRight[runeRight.length - 2 - i] instanceof Gebo
+            ) {
+                mergedRunes = runeRight[runeRight.length - 2 - i]?.text + rightRune + leftRune + mergedRunes;
+                runeRight.splice(runeRight.length - 2 - i, 1);
+            } else if (
+                runeLeft[runeLeft.length - 2 - i]?.text !== "" &&
+                runeLeft[runeLeft.length - 2 - i] instanceof Gebo
+            ) {
+                mergedRunes = rightRune + runeLeft[runeLeft.length - 2 - i]?.text + leftRune + mergedRunes;
+                runeLeft.splice(runeLeft.length - 2 - i, 1);
+            } else {
+                mergedRunes = rightRune + leftRune + mergedRunes;
+            }
         }
-
+    
         return mergedRunes;
-    }
-
+    }    
+    
     /**
      * 
      * This function will take a list of runes and add them together.

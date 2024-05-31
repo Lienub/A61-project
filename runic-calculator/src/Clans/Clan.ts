@@ -1,6 +1,7 @@
 import { Rune } from "../Runes/_rune";
-import { Raidho } from "../Runes/Rune";
+import { Gebo, Raidho } from "../Runes/Rune";
 import { Clan } from "./_clan";
+import { Convert } from "../commands/Convert";
 
 export class JokulClan extends Clan {
     public override adjustRunesConvert(runeList: Rune[]): Rune[] {
@@ -28,5 +29,42 @@ export class JokulClan extends Clan {
             temp.shift();
             return [runeList, temp];
         }
+    }
+
+    public override calculateRunes(runeList: Rune[]): number {
+        return 0;
+    }
+}
+
+export class Thorlaug extends Clan {
+    public override adjustRunesConvert(runeList: Rune[]): Rune[] {
+        return null;
+    }
+
+    public override adjustRunesAdd(runeList: Rune[], temp: Rune[]): Rune[][] {
+        return null;
+    }
+    public override calculateRunes(runeList: Rune[]): number {
+
+        let previous = 1;
+        let total = previous;
+        let values = [previous];
+
+        for (let i = 1; i < runeList.length; i++) {
+            let current = 0;
+            if(runeList[i] instanceof Gebo) {
+                total += values[values.length - 1] + values[values.length - 2];
+                continue;
+            }
+            if(runeList[i-1] instanceof Gebo) {
+                previous = values[values.length - 1] + values[values.length - 2];
+            }
+            current = new Convert().runeOperation(previous, runeList[i]) as number;
+            previous = current;
+            total += current;
+            values.push(previous);
+        }
+
+        return total;
     }
 }
