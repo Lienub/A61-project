@@ -1,5 +1,6 @@
 import { RunicCommand } from './interfaces/RunicCommand';
-import { ConvertCommand } from './convertCommand';
+import { ConvertCommand } from './convert';
+import { AddCommand } from './add';
 
 export class RunicCommandFactory {
   /**
@@ -14,8 +15,7 @@ export class RunicCommandFactory {
       case 'convert':
         return new ConvertCommand();
       case 'add':
-        // TODO: Implements Add Command
-        return null
+        return new AddCommand();
       default:
         return null;
     }

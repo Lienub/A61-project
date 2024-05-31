@@ -10,7 +10,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "strictNullChecks": true,
+    "strictFunctionTypes": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
