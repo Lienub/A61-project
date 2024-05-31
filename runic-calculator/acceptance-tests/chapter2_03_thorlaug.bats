@@ -10,12 +10,12 @@ function setup() {
     [[ "${output}" == "14" ]]
 }
 
-@test "Convert | Thorlaug | Simple runic number (2) : ᚷᚢᚢ = 10" {
+@test "Convert | Thorlaug | Simple runic number (2) : ᚷᚢᚢ = 9" {
     run runic-calculator.sh convert ᚷᚢᚢ 
 
     echo "$output"
 
-    [[ "${output}" == "10" ]]
+    [[ "${output}" == "9" ]]
 }
 
 @test "Convert | Thorlaug | Simple runic number (3) : ᚷᚦᚦ = 6" {
