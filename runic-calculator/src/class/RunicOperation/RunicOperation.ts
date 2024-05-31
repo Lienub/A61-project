@@ -1,4 +1,4 @@
-import { Ansuz, Rune, Thurisaz } from "../Runes/Rune";
+import { Rune, Thurisaz } from "../Runes/Rune";
 
 export function getOperation(input: string): RunicOperation {
     switch (input) {
@@ -40,12 +40,17 @@ export class Convert extends RunicOperation {
     }
 }
 
-//TODO
 export class Add extends RunicOperation {
     public override runeOperation(runeLeft: Rune[], runeRight: Rune[]): string {
-        const maxLength = Math.max(runeLeft.length, runeRight.length) - 1;
-        
-
+        const maxLength = Math.max(runeLeft.length, runeRight.length);
+        let mergedRunes = '';
+    
+        for (let i = 0; i < maxLength; i++) {
+            const leftRune = runeLeft[runeLeft.length - 1 - i]?.text || '';
+            const rightRune = runeRight[runeRight.length - 1 - i]?.text || '';
+            mergedRunes = rightRune + leftRune + mergedRunes;
+        }
+    
         return mergedRunes;
     }
 

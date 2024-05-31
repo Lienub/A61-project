@@ -1,6 +1,5 @@
 import { RuneList } from "./class/Runes/RuneList";
 import { getOperation } from "./class/RunicOperation/RunicOperation";
-import { RunicCommandFactory } from "./commands/runicCommandFactory";
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -16,12 +15,4 @@ const runesList = new RuneList(runicInput, command);
 
 console.log(runesList.result);
 
-// const commandFactory = new RunicCommandFactory();
-// const runicCommand = commandFactory.getCommand(command);
-
-// const result = runicCommand?.execute(runicInput);
-
-// if (result !== undefined) {
-//   console.log(result);
-// }
 
