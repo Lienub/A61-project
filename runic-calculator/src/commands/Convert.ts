@@ -28,17 +28,22 @@ export class Convert extends RunicOperation {
      */
     public override listOperation(runeList: Rune[]): number | string {
 
+        // Jokul Clan
         const runeWithRaidhoInstance = runeList.find(rune => {
             return rune instanceof Raidho;
         });
+
+        // Thorlaug Clan
         const runeWithGeboInstance = runeList.find(rune => {
             return rune instanceof Gebo;
         });
 
+        // Jokul Clan
         if(runeWithRaidhoInstance && runeWithRaidhoInstance.clan) {
             runeList = runeWithRaidhoInstance.clan.adjustRunesConvert(runeList);
         }
 
+        // Thorlaug Clan
         if(runeWithGeboInstance && runeWithGeboInstance.clan) {
             return runeWithGeboInstance.clan.calculateRunes(runeList);
         }
