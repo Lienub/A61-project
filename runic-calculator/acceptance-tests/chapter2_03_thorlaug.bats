@@ -34,7 +34,7 @@ function setup() {
     [[ "${output}" == "6" ]]
 }
 
-@test "Convert | Thorlaug | Runic number : ᚠᚠᚷᚨᚦ = 27" {
+@test "Convert | Thorlaug | Runic number (1) : ᚠᚠᚷᚨᚦ = 27" {
     run runic-calculator.sh convert ᚠᚠᚷᚨᚦ
 
     echo "$output"
@@ -42,15 +42,13 @@ function setup() {
     [[ "${output}" == "27" ]]
 }
 
-
-@test "Convert | Thorlaug | Runic number : ᚷᚠᚠᚨᚦ = 41" {
+@test "Convert | Thorlaug | Runic number (2) : ᚷᚠᚠᚨᚦ = 41" {
     run runic-calculator.sh convert ᚷᚠᚠᚨᚦ
 
     echo "$output"
 
     [[ "${output}" == "41" ]]
 }
-
 
 @test "Addition | Kormak | Keep Kormak rune attached (1) : ᚠᚷᚠᚨᚦ.ᚢᚦᚢᚢ = ᚠᚢᚷᚠᚦᚨᚢᚦᚢ" {
     run runic-calculator.sh add ᚠᚷᚠᚨᚦ.ᚢᚦᚢᚢ

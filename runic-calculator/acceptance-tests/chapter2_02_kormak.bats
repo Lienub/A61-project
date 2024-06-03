@@ -34,12 +34,20 @@ function setup() {
     [[ "${output}" == "4" ]]
 }
 
-@test "Convert | Kormak | Runic number : ᚲᚠᚠᚨᚦ = 27" {
+@test "Convert | Kormak | Runic number (1) : ᚲᚠᚠᚨᚦ = 27" {
     run runic-calculator.sh convert ᚲᚠᚠᚨᚦ 
 
     echo "$output"
 
     [[ "${output}" == "27" ]]
+}
+
+@test "Convert | Kormak | Runic number (2) : ᚠᚲᚠᚦᚨᚢᚦ = 65" {
+    run runic-calculator.sh convert ᚠᚲᚠᚦᚨᚢᚦ 
+
+    echo "$output"
+
+    [[ "${output}" == "65" ]]
 }
 
 @test "Addition | Kormak | Keep Kormak rune attached (1) : ᚠᚲᚠᚨᚦ.ᚢᚦᚢᚢ = ᚠᚢᚲᚠᚦᚨᚢᚦᚢ" {
