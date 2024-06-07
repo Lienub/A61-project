@@ -2,6 +2,7 @@ import { Clan } from "../Clans/_clan";
 import { Rune } from "./_rune";
 import { RunicSymbols } from "../enums/RunicSymbols";
 import { JokulClan, Thorlaug } from "../Clans/Clan";
+import { Archaeologist } from "../Archaeologist/_archaeologist";
 
 /**
  * 
@@ -10,30 +11,26 @@ import { JokulClan, Thorlaug } from "../Clans/Clan";
  * @param symbol 
  * @returns The rune object.
  */
-export function getRune(symbol: string) : Rune {
+export function getRune(symbol: string, archaeologist: Archaeologist) : Rune {
     switch (symbol) {
         case RunicSymbols.FEOH:
-            return new Feoh();
+            return new Feoh(archaeologist.getDecimalRune(RunicSymbols.FEOH));
         case RunicSymbols.URUZ:
-            return new Uruz();
+            return new Uruz(archaeologist.getDecimalRune(RunicSymbols.URUZ));
         case RunicSymbols.THURISAZ:
-            return new Thurisaz();
+            return new Thurisaz(archaeologist.getDecimalRune(RunicSymbols.THURISAZ));
         case RunicSymbols.ANSUZ:
-            return new Ansuz();
+            return new Ansuz(archaeologist.getDecimalRune(RunicSymbols.ANSUZ));
         case RunicSymbols.RAIDHO:
-            return new Raidho();
+            return new Raidho(archaeologist.getDecimalRune(RunicSymbols.RAIDHO));
         case RunicSymbols.GEBO:
-            return new Gebo();
+            return new Gebo(archaeologist.getDecimalRune(RunicSymbols.GEBO));
         default:
             throw new Error("Incompatible symbol");
     }
 }
 
 export class Feoh extends Rune {
-    public override get decimal(): number {
-        return 5;
-    }
-
     public override get text(): string {
         return 'ᚠ';
     }
@@ -44,10 +41,6 @@ export class Feoh extends Rune {
 }
 
 export class Uruz extends Rune {
-    public override get decimal(): number {
-        return 3;
-    }
-
     public override get text(): string {
         return 'ᚢ';
     }
@@ -58,10 +51,6 @@ export class Uruz extends Rune {
 }
 
 export class Thurisaz extends Rune {
-    public override get decimal(): number {
-        return 2;
-    }
-
     public override get text(): string {
         return 'ᚦ';
     }
@@ -72,10 +61,6 @@ export class Thurisaz extends Rune {
 }
 
 export class Ansuz extends Rune {
-    public override get decimal(): number {
-        return 1;
-    }
-
     public override get text(): string {
         return 'ᚨ';
     }
@@ -86,10 +71,6 @@ export class Ansuz extends Rune {
 }
 
 export class Raidho extends Rune {
-    public override get decimal(): number {
-        return 0;
-    }
-
     public override get text(): string {
         return 'ᚱ';
     }
@@ -99,10 +80,6 @@ export class Raidho extends Rune {
 }
 
 export class Gebo extends Rune {
-    public override get decimal(): number {
-        return 0;
-    }
-
     public override get text(): string {
         return 'ᚷ';
     }

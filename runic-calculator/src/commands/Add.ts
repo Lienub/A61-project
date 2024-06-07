@@ -1,6 +1,6 @@
+import { Archaeologist } from "../Archaeologist/_archaeologist";
 import { Gebo, Raidho } from "../Runes/Rune";
 import { Rune } from "../Runes/_rune";
-import { RunicSymbols } from "../enums/RunicSymbols";
 import { RunicOperation } from "./_operation"
 
 export class Add extends RunicOperation {
@@ -13,7 +13,7 @@ export class Add extends RunicOperation {
      * @param runeRight 
      * @returns The combined string of runes.
      */
-    public override runeOperation(runeLeft: Rune[], runeRight: Rune[]): string {
+    public override runeOperation(runeLeft: Rune[], runeRight: Rune[], archeologist: Archaeologist): string {
         const maxLength = Math.max(runeLeft.length, runeRight.length);
         let mergedRunes = '';
     
@@ -48,7 +48,7 @@ export class Add extends RunicOperation {
      * @param runeList 
      * @returns The combined string of runes.
      */
-    public override listOperation(runeList: Rune[][]): string {
+    public override listOperation(runeList: Rune[][], archeologist: Archaeologist): string {
         let temp = runeList[runeList.length - 1];
         let result = "";
         let shouldReverse = false;
@@ -67,7 +67,7 @@ export class Add extends RunicOperation {
         }
 
         for (let i = 0; i < runeList.length - 1; i++) {
-            result = this.runeOperation(temp, runeList[i]);
+            result = this.runeOperation(temp, runeList[i], archeologist);
         }
 
         return shouldReverse ? result.split('').reverse().join('') : result;

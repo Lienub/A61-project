@@ -14,15 +14,21 @@
     "node": ">=20.0.0",
     "npm": ">=10.0.0"
   },
+  "jest": {
+    "collectCoverage": true,
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["html", "text", "text-summary"]
+  },
   "scripts": {
     "build": "tsc src/index.ts --outDir dist",
     "start": "node dist/index.js",
     "dev": "npm run build && npm run start",
-    "clear": "rm -rf dist && rm -rf node_modules && rm -rf package-lock.json",
+    "clear": "rm -rf dist && rm -rf node_modules && rm -rf package-lock.json && rm -rf coverage/",
     "test": "npm run build && npx bats acceptance-tests/*bats",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "test:unit": "yarn jest"
+    "test:unit": "yarn jest",
+    "test:coverage": "npx jest --coverage --config=jest.config.ts"
   },
   "dependencies": {
     "bats": "^1.11.0",

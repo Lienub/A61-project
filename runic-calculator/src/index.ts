@@ -8,9 +8,23 @@ if (args.length < 2) {
   process.exit(1);
 }
 
-const command = getOperation(args[0]);
-const runicInput = args[1];
+let runesList, runicInput, command = null;
+let runicOption = "none";
 
-const runesList = new RuneList(runicInput, command);
+switch (true) {
+  case args.length === 2:
+    command = getOperation(args[0]);
+    runicInput = args[1];
+    runesList = new RuneList(runicOption, runicInput, command);
+    break;
+  case args.length === 3:
+    command = getOperation(args[1]);
+    runicOption = args[0];
+    runicInput = args[2];
+    runesList = new RuneList(runicOption, runicInput, command);
+    break;
+  default:
+    process.exit(1);
+}
 
 console.log(runesList.result);
