@@ -63,7 +63,11 @@ export class Add extends RunicOperation {
             if(runeList[0][runeList[0].length - 1] instanceof Raidho) {
                 shouldReverse = true;
             }
-            [runeList[0], temp] = runeWithRaidhoInstance.clan.adjustRunesAdd(runeList[0], temp)
+            if (runeWithRaidhoInstance.clan) {
+                [runeList[0], temp] = runeWithRaidhoInstance.clan.adjustRunesAdd(runeList[0], temp);
+            } else {
+                throw new Error("Clan is null, cannot adjust runes");
+            }
         }
 
         for (let i = 0; i < runeList.length - 1; i++) {

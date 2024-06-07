@@ -27,7 +27,7 @@
     "test": "npm run build && npx bats acceptance-tests/*bats",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
-    "test:unit": "yarn jest",
+    "test:unit": "yarn jest --config=jest.config.ts",
     "test:coverage": "npx jest --coverage --config=jest.config.ts"
   },
   "dependencies": {

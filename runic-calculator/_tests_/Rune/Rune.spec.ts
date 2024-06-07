@@ -1,11 +1,12 @@
-import { getRune, Feoh, Uruz, Thurisaz, Ansuz, Raidho, Gebo } from "../src/Runes/Rune";
-import { RunicSymbols } from "../src/enums/RunicSymbols";
-import { JokulClan, Thorlaug } from "../src/Clans/Clan";
+import { getRune, Feoh, Uruz, Thurisaz, Ansuz, Raidho, Gebo } from "../../src/Runes/Rune";
+import { RunicSymbols } from "../../src/enums/RunicSymbols";
+import { JokulClan, Thorlaug } from "../../src/Clans/Clan";
+import { BjornStraussler } from "../../src/Archaeologist/Archaeologist";
 
 describe("Rune Classes", () => {
     test("Feoh class should return correct values", () => {
         // Arrange
-        const feoh = new Feoh();
+        const feoh = new Feoh(5);
         
         // Act & Assert
         expect(feoh.decimal).toBe(5);
@@ -15,7 +16,7 @@ describe("Rune Classes", () => {
 
     test("Uruz class should return correct values", () => {
         // Arrange
-        const uruz = new Uruz();
+        const uruz = new Uruz(3);
         
         // Act & Assert
         expect(uruz.decimal).toBe(3);
@@ -25,7 +26,7 @@ describe("Rune Classes", () => {
 
     test("Thurisaz class should return correct values", () => {
         // Arrange
-        const thurisaz = new Thurisaz();
+        const thurisaz = new Thurisaz(2);
         
         // Act & Assert
         expect(thurisaz.decimal).toBe(2);
@@ -35,7 +36,7 @@ describe("Rune Classes", () => {
 
     test("Ansuz class should return correct values", () => {
         // Arrange
-        const ansuz = new Ansuz();
+        const ansuz = new Ansuz(1);
         
         // Act & Assert
         expect(ansuz.decimal).toBe(1);
@@ -45,7 +46,7 @@ describe("Rune Classes", () => {
 
     test("Raidho class should return correct values", () => {
         // Arrange
-        const raidho = new Raidho();
+        const raidho = new Raidho(0);
         
         // Act & Assert
         expect(raidho.decimal).toBe(0);
@@ -55,7 +56,7 @@ describe("Rune Classes", () => {
 
     test("Gebo class should return correct values", () => {
         // Arrange
-        const gebo = new Gebo();
+        const gebo = new Gebo(0);
         
         // Act & Assert
         expect(gebo.decimal).toBe(0);
@@ -65,9 +66,11 @@ describe("Rune Classes", () => {
 });
 
 describe("getRune function", () => {
+    const archaeologist = new BjornStraussler("bjorn_straussler");
+
     test("should return Feoh instance for FEOH symbol", () => {
         // Act
-        const rune = getRune(RunicSymbols.FEOH);
+        const rune = getRune(RunicSymbols.FEOH, archaeologist);
         
         // Assert
         expect(rune).toBeInstanceOf(Feoh);
@@ -75,7 +78,7 @@ describe("getRune function", () => {
 
     test("should return Uruz instance for URUZ symbol", () => {
         // Act
-        const rune = getRune(RunicSymbols.URUZ);
+        const rune = getRune(RunicSymbols.URUZ, archaeologist);
         
         // Assert
         expect(rune).toBeInstanceOf(Uruz);
@@ -83,7 +86,7 @@ describe("getRune function", () => {
 
     test("should return Thurisaz instance for THURISAZ symbol", () => {
         // Act
-        const rune = getRune(RunicSymbols.THURISAZ);
+        const rune = getRune(RunicSymbols.THURISAZ, archaeologist);
         
         // Assert
         expect(rune).toBeInstanceOf(Thurisaz);
@@ -91,7 +94,7 @@ describe("getRune function", () => {
 
     test("should return Ansuz instance for ANSUZ symbol", () => {
         // Act
-        const rune = getRune(RunicSymbols.ANSUZ);
+        const rune = getRune(RunicSymbols.ANSUZ, archaeologist);
         
         // Assert
         expect(rune).toBeInstanceOf(Ansuz);
@@ -99,7 +102,7 @@ describe("getRune function", () => {
 
     test("should return Raidho instance for RAIDHO symbol", () => {
         // Act
-        const rune = getRune(RunicSymbols.RAIDHO);
+        const rune = getRune(RunicSymbols.RAIDHO, archaeologist);
         
         // Assert
         expect(rune).toBeInstanceOf(Raidho);
@@ -107,7 +110,7 @@ describe("getRune function", () => {
 
     test("should return Gebo instance for GEBO symbol", () => {
         // Act
-        const rune = getRune(RunicSymbols.GEBO);
+        const rune = getRune(RunicSymbols.GEBO, archaeologist);
         
         // Assert
         expect(rune).toBeInstanceOf(Gebo);
@@ -115,6 +118,6 @@ describe("getRune function", () => {
 
     test("should throw error for incompatible symbol", () => {
         // Act & Assert
-        expect(() => getRune("INVALID")).toThrow("Incompatible symbol");
+        expect(() => getRune("INVALID", archaeologist)).toThrow("Incompatible symbol");
     });
 });
