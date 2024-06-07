@@ -32,7 +32,7 @@ export function getRune(symbol: string, archaeologist: Archaeologist) : Rune {
 
 export class Feoh extends Rune {
     public override get text(): string {
-        return 'ᚠ';
+        return RunicSymbols.FEOH;
     }
 
     public override get clan(): Clan | null {
@@ -42,7 +42,7 @@ export class Feoh extends Rune {
 
 export class Uruz extends Rune {
     public override get text(): string {
-        return 'ᚢ';
+        return RunicSymbols.URUZ;
     }
 
     public override get clan(): Clan | null {
@@ -52,7 +52,7 @@ export class Uruz extends Rune {
 
 export class Thurisaz extends Rune {
     public override get text(): string {
-        return 'ᚦ';
+        return RunicSymbols.THURISAZ;
     }
 
     public override get clan(): Clan | null {
@@ -62,7 +62,7 @@ export class Thurisaz extends Rune {
 
 export class Ansuz extends Rune {
     public override get text(): string {
-        return 'ᚨ';
+        return RunicSymbols.ANSUZ;
     }
 
     public override get clan(): Clan | null {
@@ -72,7 +72,7 @@ export class Ansuz extends Rune {
 
 export class Raidho extends Rune {
     public override get text(): string {
-        return 'ᚱ';
+        return RunicSymbols.RAIDHO;
     }
     public override get clan(): Clan | null {
         return new JokulClan();
@@ -81,7 +81,7 @@ export class Raidho extends Rune {
 
 export class Gebo extends Rune {
     public override get text(): string {
-        return 'ᚷ';
+        return RunicSymbols.GEBO;
     }
 
     public override get clan(): Clan | null {
