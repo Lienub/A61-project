@@ -1,5 +1,5 @@
 import { Rune } from "../Runes/_rune";
-import { Gebo, Raidho } from "../Runes/Rune";
+import { Gebo, Kauna, Raidho, Thurisaz } from "../Runes/Rune";
 import { Clan } from "./_clan";
 import { Convert } from "../commands/Convert";
 
@@ -67,4 +67,37 @@ export class Thorlaug extends Clan {
 
         return total;
     }
+}
+
+export class Kormak extends Clan {
+    public adjustRunesConvert(runeList: Rune[]): Rune[] {
+        throw new Error("Method not implemented.");
+    }
+    public adjustRunesAdd(runeList: Rune[], temp: Rune[]): Rune[][] {
+        throw new Error("Method not implemented.");
+    }
+    public calculateRunes(runeList: Rune[]): number {
+        let previous: Rune | null = null;
+        let total = 1;
+        
+        for (let i = 1 ; i < runeList.length ; i++) {
+            if(i < runeList.length - 1 && runeList[i + 1] instanceof Kauna) {
+                previous = runeList[i];
+            } else if (runeList[i] instanceof Kauna && previous) {
+                let res = 0;
+                if (runeList[i] instanceof Thurisaz) {
+                    res =  total * previous.decimal * 2;
+                } else {
+                    res = total + previous.decimal * 2;
+                }
+
+                total += res;
+            } else {
+                total += new Convert().runeOperation(total, runeList[i]) as number;
+            }
+        }
+
+        return total;
+}
+    
 }

@@ -1,7 +1,7 @@
 import { Clan } from "../Clans/_clan";
 import { Rune } from "./_rune";
 import { RunicSymbols } from "../enums/RunicSymbols";
-import { JokulClan, Thorlaug } from "../Clans/Clan";
+import { JokulClan, Thorlaug, Kormak } from "../Clans/Clan";
 
 /**
  * 
@@ -24,6 +24,8 @@ export function getRune(symbol: string) : Rune {
             return new Raidho();
         case RunicSymbols.GEBO:
             return new Gebo();
+        case RunicSymbols.KAUNA:
+            return new Kauna();
         default:
             throw new Error("Incompatible symbol");
     }
@@ -110,4 +112,17 @@ export class Gebo extends Rune {
     public override get clan(): Clan | null {
         return new Thorlaug();
     }
+}
+
+export class Kauna extends Rune {
+    public get decimal(): number {
+        return 0;
+    }
+    public get text(): string {
+        return 'ᚲ';
+    }
+    public get clan(): Clan | null {
+        return new Kormak();
+    }
+    
 }

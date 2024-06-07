@@ -1,5 +1,5 @@
 import { Rune } from "../Runes/_rune";
-import { Gebo, Raidho, Thurisaz } from "../Runes/Rune";
+import { Gebo, Raidho, Thurisaz, Kauna } from "../Runes/Rune";
 import { RunicOperation } from "./_operation"
 
 export class Convert extends RunicOperation {
@@ -38,14 +38,24 @@ export class Convert extends RunicOperation {
             return rune instanceof Gebo;
         });
 
+        // Kormak Clan
+        const runeWithKaunaInstance = runeList.find(rune => {
+            return rune instanceof Kauna;
+        });
+
         // Jokul Clan
-        if(runeWithRaidhoInstance && runeWithRaidhoInstance.clan) {
+        if (runeWithRaidhoInstance && runeWithRaidhoInstance.clan) {
             runeList = runeWithRaidhoInstance.clan.adjustRunesConvert(runeList);
         }
 
         // Thorlaug Clan
-        if(runeWithGeboInstance && runeWithGeboInstance.clan) {
+        if (runeWithGeboInstance && runeWithGeboInstance.clan) {
             return runeWithGeboInstance.clan.calculateRunes(runeList);
+        }
+
+        // Kormak Clan
+        if (runeWithKaunaInstance && runeWithKaunaInstance.clan) {
+            return runeWithKaunaInstance.clan.calculateRunes(runeList);
         }
 
         let previous = 1;
