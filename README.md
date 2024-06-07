@@ -48,7 +48,12 @@ cd projet-a61/runic-calculator/
 
 ### Lancer les tests
 ```bash
+# lancer les tests .bats
 npm run test
+# lancer les tests unitaires (jest) du dossier _tests_
+nom run test:unit
+# lancer tests uniatire avec coverage
+npm run test:coverage
 ```
 
 ### Vérifier qualité du code
