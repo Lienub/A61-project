@@ -5,11 +5,9 @@ export class BjornStraussler extends Archaeologist {
     constructor(option: string) {
         super(option);
     }
-    public get option(): string {
-        return this._option;
-    }
-    public getDecimalRune(runicSymbol: string): number {
-        switch(runicSymbol) {
+
+    public getDecimalRune(runicSymbol: RunicSymbols): number {
+        switch (runicSymbol) {
             case RunicSymbols.FEOH:
                 return 5;
             case RunicSymbols.URUZ:
@@ -33,11 +31,9 @@ export class LeaRheingold extends Archaeologist {
     constructor(option: string) {
         super(option);
     }
-    public get option(): string {
-        return this._option;
-    }
+
     public getDecimalRune(runicSymbol: string): number {
-        switch(runicSymbol) {
+        switch (runicSymbol) {
             case RunicSymbols.FEOH:
                 return 3;
             case RunicSymbols.URUZ:
@@ -49,7 +45,7 @@ export class LeaRheingold extends Archaeologist {
             case RunicSymbols.RAIDHO:
                 return 0;
             case RunicSymbols.GEBO:
-                return 0;
+                return 5;
             default:
                 return 0;
         }

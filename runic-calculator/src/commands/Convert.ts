@@ -39,6 +39,8 @@ export class Convert extends RunicOperation {
      * @returns The total value of the runes in the list.
      */
     public override listOperation(runeList: Rune[],  archeologist: Archaeologist): number | string {
+        let index = 1;
+        let previous = 1;
 
         // Jokul Clan
         const runeWithRaidhoInstance = runeList.find(rune => {
@@ -46,26 +48,45 @@ export class Convert extends RunicOperation {
         });
 
         // Thorlaug Clan
-        const runeWithGeboInstance = runeList.find(rune => {
-            return rune instanceof Gebo;
-        });
+        const indexOfRuneGebo = runeList.findIndex(rune => rune instanceof Gebo);
+        const runeWithGeboInstance = indexOfRuneGebo !== -1 ? runeList[indexOfRuneGebo] : undefined;
 
         // Jokul Clan
         if(runeWithRaidhoInstance && runeWithRaidhoInstance.clan) {
             runeList = runeWithRaidhoInstance.clan.adjustRunesConvert(runeList);
+
+            if(archeologist instanceof LeaRheingold) { // Jokul Clan + Lea Rheingold
+                runeList.reverse();
+                index = 0;
+            }
         }
 
         // Thorlaug Clan
-        if(runeWithGeboInstance && runeWithGeboInstance.clan) {
+        if(!(archeologist instanceof LeaRheingold) && runeWithGeboInstance && runeWithGeboInstance.clan) {
             return runeWithGeboInstance.clan.calculateRunes(runeList, archeologist);
         }
 
-        let previous = 1;
+        if(archeologist instanceof LeaRheingold && runeWithGeboInstance && indexOfRuneGebo == 0) {
+            previous = 0;
+            index = 0;
+        }
+
         let total = previous;
 
-        for (let i = 1; i < runeList.length; i++) {
+        for (let i = index; i < runeList.length; i++) {
             let current = 0;
+            if(archeologist instanceof LeaRheingold && runeList[i] instanceof Gebo) {
+                current = runeList[i].decimal;
+                if(i-1 >= 0 && runeList[i-1] instanceof Gebo) {
+                current = runeList[i].decimal + runeList[i-1].decimal;
+                }
+                previous = current;
+                total += current;
+                continue;
+            }
+            
             current = this.runeOperation(previous, runeList[i], archeologist) as number;
+            
             previous = current;
             total += current;
         }
