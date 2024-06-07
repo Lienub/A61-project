@@ -77,24 +77,27 @@ export class Kormak extends Clan {
         throw new Error("Method not implemented.");
     }
     public calculateRunes(runeList: Rune[]): number {
-        let previous: Rune | null = null;
-        let total = 1;
-        
-        for (let i = 1 ; i < runeList.length ; i++) {
-            if(i < runeList.length - 1 && runeList[i + 1] instanceof Kauna) {
-                previous = runeList[i];
-            } else if (runeList[i] instanceof Kauna && previous) {
-                let res = 0;
-                if (runeList[i] instanceof Thurisaz) {
-                    res =  total * previous.decimal * 2;
-                } else {
-                    res = total + previous.decimal * 2;
-                }
+        let previous = 1;
+        let total = previous;
+        let values = [previous];
 
-                total += res;
-            } else {
-                total += new Convert().runeOperation(total, runeList[i]) as number;
+        for (let i = 1; i < runeList.length; i++) {
+            let current = 0;
+            if(runeList[i+1] instanceof Kauna) {
+                if(runeList[i] instanceof Thurisaz) {
+                    current = ((runeList[i].decimal*2) * values[values.length - 1]);
+                } else {
+                    current = ((runeList[i].decimal*2) + values[values.length - 1]);
+                }
+                previous = current;
+                total += current;
+                i+=1;
+                continue
             }
+            current = new Convert().runeOperation(previous, runeList[i]) as number;
+            previous = current;
+            total += current;
+            values.push(previous);
         }
 
         return total;
