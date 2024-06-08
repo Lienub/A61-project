@@ -40,7 +40,7 @@ export class RuneList {
     }
 
     public get result(): number | string {
-        return this.operation.listOperation(this.list, this.archeologist);
+        return this.operation.listOperation(this.list);
     }
 
     public get values(): Rune[] | Rune[][] {
@@ -48,13 +48,12 @@ export class RuneList {
     }
 
     private split(input: string): string[] | string[][] {
+        const res = [];
+
         switch (true) {
             case this.operation instanceof Convert:
                 return input.split('').reverse();
             case this.operation instanceof Add:
-                // eslint-disable-next-line no-case-declarations
-                const res = [];
-
                 for (const txt of input.split('.')) {
                     res.push(txt.split(''))
                 }

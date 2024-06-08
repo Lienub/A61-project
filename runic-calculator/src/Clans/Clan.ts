@@ -34,16 +34,19 @@ export class JokulClan extends Clan {
         }
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public override calculateRunes(runeList: Rune[]): number {
         return 0;
     }
 }
 
 export class Thorlaug extends Clan {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public override adjustRunesConvert(runeList: Rune[]): Rune[] {
         return [];
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public override adjustRunesAdd(runeList: Rune[], temp: Rune[]): Rune[][] {
         return [[]];
     }

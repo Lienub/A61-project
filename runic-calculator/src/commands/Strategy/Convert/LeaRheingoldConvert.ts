@@ -1,7 +1,6 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
 import { Ansuz, Feoh, Gebo, Raidho } from "../../../Runes/Rune";
-import { Archaeologist } from "../../../Archaeologist/_archaeologist";
 
 /**
  * @title Lea Rheingold Convert
@@ -31,7 +30,7 @@ export class LeaRheingoldConvert implements RuneOperationStrategy {
      * @returns The total value of the runes in the list.
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public listOperation(runeList: Rune[], archaeologist: Archaeologist): number | string {
+    public listOperation(runeList: Rune[]): number | string {
         let index = 1;
         let previous = 1;
 

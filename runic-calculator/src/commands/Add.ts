@@ -25,7 +25,7 @@ export class Add extends RunicOperation {
      * @param runeList 
      * @returns The combined string of runes.
      */
-    public override listOperation(runeList: Rune[][], archeologist: Archaeologist): string | number {
-        return this.strategy.listOperation(runeList, archeologist);
+    public override listOperation(runeList: Rune[][]): string | number {
+        return this.strategy.listOperation(runeList);
     }
 }

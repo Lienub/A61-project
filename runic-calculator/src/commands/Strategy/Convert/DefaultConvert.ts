@@ -1,7 +1,7 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
-import { Archaeologist } from "../../../Archaeologist/_archaeologist";
 import { Gebo, Raidho, Thurisaz } from "../../../Runes/Rune";
+import { BjornStraussler } from "../../../Archaeologist/BjornStraussler";
 
 /**
  * @title Default Convert
@@ -30,7 +30,7 @@ export class DefaultConvert implements RuneOperationStrategy {
      * @param runeList 
      * @returns The total value of the runes in the list.
      */
-    public listOperation(runeList: Rune[], archeologist: Archaeologist): number | string {
+    public listOperation(runeList: Rune[]): number | string {
         let previous = 1;
 
         // Jokul Clan
@@ -49,7 +49,7 @@ export class DefaultConvert implements RuneOperationStrategy {
 
         // Thorlaug Clan
         if (runeWithGeboInstance && runeWithGeboInstance.clan) {
-            return runeWithGeboInstance.clan.calculateRunes(runeList, archeologist);
+            return runeWithGeboInstance.clan.calculateRunes(runeList, new BjornStraussler('bjorn_straussler'));
         }
 
 

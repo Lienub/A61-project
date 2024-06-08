@@ -1,6 +1,5 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
-import { Archaeologist } from "../../../Archaeologist/_archaeologist";
 import { Gebo, Raidho } from "../../../Runes/Rune";
 
 /**
@@ -54,7 +53,7 @@ export class DefaultAdd implements RuneOperationStrategy {
      * @returns The combined string of runes.
      */
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    public listOperation(runeList: Rune[][], archeologist: Archaeologist): string {
+    public listOperation(runeList: Rune[][]): string {
         let temp = runeList[runeList.length - 1];
         let result = "";
 
