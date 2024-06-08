@@ -1,9 +1,9 @@
-import { LeaRheingold } from '../src/Archaeologist/Archaeologist';
+import { LeaRheingold } from '../src/Archaeologist/LeaRheingold';
 import { RunicSymbols } from '../src/enums/RunicSymbols';
 
 describe('Lea Rheingold Class', () => {
     test('should return decimal values for runic symbols', () => {
-        const lea = new LeaRheingold('option');
+        const lea = new LeaRheingold('lea_rheingold');
         
         expect(lea.getDecimalRune(RunicSymbols.FEOH)).toBe(3);
         expect(lea.getDecimalRune(RunicSymbols.URUZ)).toBe(5);

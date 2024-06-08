@@ -1,9 +1,9 @@
-import { BjornStraussler } from '../src/Archaeologist/Archaeologist';
+import { BjornStraussler } from '../src/Archaeologist/BjornStraussler';
 import { RunicSymbols } from '../src/enums/RunicSymbols';
 
 describe('Bjorn Straussler Class', () => {
     test('should return decimal values for runic symbols', () => {
-        const bjorn = new BjornStraussler('option');
+        const bjorn = new BjornStraussler('bjorn_straussler');
         
         expect(bjorn.getDecimalRune(RunicSymbols.FEOH)).toBe(5);
         expect(bjorn.getDecimalRune(RunicSymbols.URUZ)).toBe(3);

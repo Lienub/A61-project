@@ -1,7 +1,7 @@
 import { getRune, Feoh, Uruz, Thurisaz, Ansuz, Raidho, Gebo } from "../../src/Runes/Rune";
 import { RunicSymbols } from "../../src/enums/RunicSymbols";
 import { JokulClan, Thorlaug } from "../../src/Clans/Clan";
-import { BjornStraussler } from "../../src/Archaeologist/Archaeologist";
+import { BjornStraussler } from "../../src/Archaeologist/BjornStraussler";
 
 describe("Rune Classes", () => {
     test("Feoh class should return correct values", () => {
