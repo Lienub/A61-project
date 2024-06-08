@@ -4,8 +4,9 @@ import { getArchaeologist } from "./Archaeologist/_archaeologistFactory_";
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
-  console.error('Usage: runic-calculator <command> <args>');
+  console.error('Usage: runic-calculator <option> <command> <args>');
   console.error('\t\t\t- <command>: convert | add');
+  console.error('\t\t\t- <option> (optional): --archaeologist=<name>');
   process.exit(1);
 }
 
@@ -27,6 +28,9 @@ switch (true) {
     runesList = new RuneList(runicInput, command, archaeologist);
     break;
   default:
+    console.error('Usage: runic-calculator <option> <command> <args>');
+    console.error('\t\t\t- <command>: convert | add');
+    console.error('\t\t\t- <option> (optional): --archaeologist=<name>');
     process.exit(1);
 }
 
