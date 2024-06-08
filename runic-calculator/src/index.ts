@@ -10,8 +10,8 @@ if (args.length < 2) {
 }
 
 let runesList, runicInput, command = null;
-let runicOption = "none";
-let archaeologist = getArchaeologist('bjorn_straussler');
+let runicOption = "bjorn_straussler";
+let archaeologist = getArchaeologist(runicOption);
 
 switch (true) {
   case args.length === 2:

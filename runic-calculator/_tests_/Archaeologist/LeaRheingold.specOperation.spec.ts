@@ -3,7 +3,7 @@ import { RuneList } from '../../src/Runes/RuneList';
 import { Add } from '../../src/commands/Add';
 import { Convert } from '../../src/commands/Convert';
 
-describe('Bjorn straussler operation', () => {
+describe('Lea Rheingold operation', () => {
     test('Convert | Single rune : ᚠ = 1', () => {
         const convertArch = new LeaRheingold('lea_rheingold');
         const convertMock = new Convert(convertArch);
