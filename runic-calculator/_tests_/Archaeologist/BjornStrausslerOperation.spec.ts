@@ -1,10 +1,9 @@
-import { RuneList } from '../../src/Runes/RuneList';
-import { Convert } from '../../src/commands/Convert';
-import { Add } from '../../src/commands/Add';
-import { Archaeologist } from '../../src/Archaeologist/_archaeologist';
 import { BjornStraussler } from '../../src/Archaeologist/BjornStraussler';
+import { RuneList } from '../../src/Runes/RuneList';
+import { Add } from '../../src/commands/Add';
+import { Convert } from '../../src/commands/Convert';
 
-describe('RuneList Class Functionality', () => {
+describe('Bjorn straussler operation', () => {
     test('Convert | Same runes : ᚠᚠᚠᚠ = 34', () => {
         const convertArch = new BjornStraussler('bjorn_straussler');
         const convertMock = new Convert(convertArch);

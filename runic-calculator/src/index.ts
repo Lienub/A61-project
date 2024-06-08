@@ -17,14 +17,14 @@ switch (true) {
   case args.length === 2:
     command = getOperation(args[0], archaeologist);
     runicInput = args[1];
-    runesList = new RuneList(runicOption, runicInput, command, archaeologist);
+    runesList = new RuneList(runicInput, command, archaeologist);
     break;
   case args.length === 3:
     runicOption = args[0].split('=')[1];
     archaeologist = getArchaeologist(runicOption);
     command = getOperation(args[1], archaeologist);
     runicInput = args[2];
-    runesList = new RuneList(runicOption, runicInput, command, archaeologist);
+    runesList = new RuneList(runicInput, command, archaeologist);
     break;
   default:
     process.exit(1);

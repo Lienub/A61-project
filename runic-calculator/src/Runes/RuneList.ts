@@ -10,7 +10,7 @@ export class RuneList {
     archeologist: Archaeologist;
     list: Rune[] | Rune[][];
 
-    constructor(option: string, input: string, operation: RunicOperation, archeologist: Archaeologist) {
+    constructor(input: string, operation: RunicOperation, archeologist: Archaeologist) {
         this.operation = operation;
         this.archeologist = archeologist;
         let runes;
