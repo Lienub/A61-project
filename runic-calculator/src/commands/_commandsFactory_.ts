@@ -1,3 +1,4 @@
+import { Archaeologist } from "../Archaeologist/_archaeologist";
 import { RunicOperation } from "./_operation"
 import { Add } from "./Add";
 import { Convert } from "./Convert";
@@ -9,12 +10,12 @@ import { Convert } from "./Convert";
  * @param input 
  * @returns The operation to be performed.
  */
-export function getOperation(input: string): RunicOperation {
+export function getOperation(input: string, archaeologist: Archaeologist): RunicOperation {
     switch (input) {
         case "convert":
-            return new Convert();
+            return new Convert(archaeologist);
         case "add":
-            return new Add();
+            return new Add(archaeologist);
         default:
             throw new Error("Unsupported operation.");
     }

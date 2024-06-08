@@ -1,8 +1,8 @@
 import { Rune } from "../Runes/_rune";
 import { Gebo, Raidho } from "../Runes/Rune";
 import { Clan } from "./_clan";
-import { Convert } from "../commands/Convert";
 import { Archaeologist } from "../Archaeologist/_archaeologist";
+import { DefaultConvert } from "../commands/Strategy/Convert/DefaultConvert";
 
 export class JokulClan extends Clan {
     public override adjustRunesConvert(runeList: Rune[]): Rune[] {
@@ -60,7 +60,7 @@ export class Thorlaug extends Clan {
             if(runeList[i-1] instanceof Gebo) {
                 previous = values[values.length - 1] + values[values.length - 2];
             }
-            current = new Convert().runeOperation(previous, runeList[i], archeologist) as number;
+            current = new DefaultConvert().runeOperation(previous, runeList[i], archeologist) as number;
             previous = current;
             total += current;
             values.push(previous);

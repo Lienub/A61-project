@@ -4,32 +4,16 @@ import { Rune } from "./_rune";
 import { getRune } from "./Rune";
 import { RunicOperation } from "../commands/_operation";
 import { Archaeologist } from "../Archaeologist/_archaeologist";
-import { BjornStraussler, LeaRheingold } from "../Archaeologist/Archaeologist";
 
 export class RuneList {
     operation: RunicOperation;
     archeologist: Archaeologist;
     list: Rune[] | Rune[][];
 
-    constructor(option: string, input: string, operation: RunicOperation) {
+    constructor(option: string, input: string, operation: RunicOperation, archeologist: Archaeologist) {
         this.operation = operation;
-        this.archeologist = new BjornStraussler(option); // default
+        this.archeologist = archeologist;
         let runes;
-
-        if (option !== "none") {
-            option = option.split('=')[1];
-            switch (option) {
-                case "lea_rheingold":
-                    this.archeologist = new LeaRheingold(option);
-                    break;
-                case "bjorn_straussler":
-                    break;
-                default:
-                    throw new Error("Unsupported archaeologist.");
-            }
-        }
-
-
 
         if (operation instanceof Convert) {
             this.list = [] as Rune[];

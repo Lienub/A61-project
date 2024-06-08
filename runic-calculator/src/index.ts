@@ -1,5 +1,6 @@
 import { RuneList } from "./Runes/RuneList";
-import { getOperation } from "./commands/commandsFactory";
+import { getOperation } from "./commands/_commandsFactory_";
+import { getArchaeologist } from "./Archaeologist/_archaeologistFactory_";
 
 const args = process.argv.slice(2);
 if (args.length < 2) {
@@ -10,18 +11,20 @@ if (args.length < 2) {
 
 let runesList, runicInput, command = null;
 let runicOption = "none";
+let archaeologist = getArchaeologist('bjorn_straussler');
 
 switch (true) {
   case args.length === 2:
-    command = getOperation(args[0]);
+    command = getOperation(args[0], archaeologist);
     runicInput = args[1];
-    runesList = new RuneList(runicOption, runicInput, command);
+    runesList = new RuneList(runicOption, runicInput, command, archaeologist);
     break;
   case args.length === 3:
-    command = getOperation(args[1]);
-    runicOption = args[0];
+    runicOption = args[0].split('=')[1];
+    archaeologist = getArchaeologist(runicOption);
+    command = getOperation(args[1], archaeologist);
     runicInput = args[2];
-    runesList = new RuneList(runicOption, runicInput, command);
+    runesList = new RuneList(runicOption, runicInput, command, archaeologist);
     break;
   default:
     process.exit(1);

@@ -11,7 +11,7 @@ function setup() {
 }
 
 @test "Convert | Lea Rheingold | Jokul | Right to left: ᚠᚠᚨᚦᚱ  = 109" {
-    run runic-calculator.sh --archaeologist=lea_rheingold  convert ᚠᚠᚨᚦᚱ
+    run runic-calculator.sh --archaeologist=lea_rheingold convert ᚠᚠᚨᚦᚱ
 
     echo "$output"
 
@@ -63,7 +63,7 @@ function setup() {
 
     echo "$output"
 
-    [[ "${output}" == "0" ]]
+    [[ "${output}" == "95" ]]
 }
 
 @test "Addition | Lea Rheingold | Kormak | Do not keep Kormak rune attached (1) : ᚠᚲᚠᚨᚦ.ᚢᚦᚢᚢ = ᚠᚲᚢᚠᚦᚨᚢᚦᚢ" {
