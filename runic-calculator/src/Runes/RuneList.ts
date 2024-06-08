@@ -26,7 +26,7 @@ export class RuneList {
             this.list = [] as Rune[][];
             runes = this.split(input) as string[][];
             for (const rune of runes) {
-                let sublist = [];
+                const sublist = [];
                 for (const subrune of rune) {
                     sublist.push(getRune(subrune, this.archeologist));
                 }
@@ -52,11 +52,10 @@ export class RuneList {
             case this.operation instanceof Convert:
                 return input.split('').reverse();
             case this.operation instanceof Add:
-                let res = [];
+                // eslint-disable-next-line no-case-declarations
+                const res = [];
 
-                let sub = input.split('.');
-
-                for (const txt of sub) {
+                for (const txt of input.split('.')) {
                     res.push(txt.split(''))
                 }
 

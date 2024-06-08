@@ -1,7 +1,6 @@
 import { RuneList } from '../../src/Runes/RuneList';
 import { Convert } from '../../src/commands/Convert';
 import { Add } from '../../src/commands/Add';
-import { Archaeologist } from '../../src/Archaeologist/_archaeologist';
 import { BjornStraussler } from '../../src/Archaeologist/BjornStraussler';
 
 describe('RuneList Class Functionality', () => {

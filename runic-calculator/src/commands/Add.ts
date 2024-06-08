@@ -8,7 +8,6 @@ import { LeaRheingoldAdd } from "./Strategy/Add/LeaRheingoldAdd";
 
 export class Add extends RunicOperation {
     private strategy: RuneOperationStrategy;
-    private shouldReverse: boolean = false;
 
     constructor(archeologist: Archaeologist) {
         super();

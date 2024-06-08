@@ -15,7 +15,7 @@ export class DefaultConvert implements RuneOperationStrategy {
   * @param rune 
   * @returns The value of the two runes combined.
   */
-    public runeOperation(previousRune: number, rune: Rune, archeologist: Archaeologist): number | string {
+    public runeOperation(previousRune: number, rune: Rune): number | string {
         if (rune instanceof Thurisaz) {
             return previousRune * rune.decimal;
         } else {
@@ -57,7 +57,7 @@ export class DefaultConvert implements RuneOperationStrategy {
 
         for (let i = 1; i < runeList.length; i++) {
             let current = 0;
-            current = this.runeOperation(previous, runeList[i], archeologist) as number;
+            current = this.runeOperation(previous, runeList[i]) as number;
 
             previous = current;
             total += current;

@@ -3,6 +3,8 @@ import { Gebo, Raidho } from "../Runes/Rune";
 import { Clan } from "./_clan";
 import { Archaeologist } from "../Archaeologist/_archaeologist";
 import { DefaultConvert } from "../commands/Strategy/Convert/DefaultConvert";
+import { LeaRheingold } from "../Archaeologist/LeaRheingold";
+import { LeaRheingoldConvert } from "../commands/Strategy/Convert/LeaRheingoldConvert";
 
 export class JokulClan extends Clan {
     public override adjustRunesConvert(runeList: Rune[]): Rune[] {
@@ -45,11 +47,12 @@ export class Thorlaug extends Clan {
     public override adjustRunesAdd(runeList: Rune[], temp: Rune[]): Rune[][] {
         return [[]];
     }
+
     public override calculateRunes(runeList: Rune[], archeologist: Archaeologist): number {
 
         let previous = 1;
         let total = previous;
-        let values = [previous];
+        const values = [previous];
 
         for (let i = 1; i < runeList.length; i++) {
             let current = 0;
@@ -60,7 +63,11 @@ export class Thorlaug extends Clan {
             if(runeList[i-1] instanceof Gebo) {
                 previous = values[values.length - 1] + values[values.length - 2];
             }
-            current = new DefaultConvert().runeOperation(previous, runeList[i], archeologist) as number;
+            if(archeologist instanceof LeaRheingold) { 
+                current = new LeaRheingoldConvert().runeOperation(previous, runeList[i]) as number;
+            } else {
+                current = new DefaultConvert().runeOperation(previous, runeList[i]) as number;
+            }
             previous = current;
             total += current;
             values.push(previous);

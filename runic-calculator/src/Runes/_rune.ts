@@ -1,4 +1,3 @@
-import { Archaeologist } from "../Archaeologist/_archaeologist";
 import { Clan } from "../Clans/_clan";
 
 export abstract class Rune {

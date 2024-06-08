@@ -1,7 +1,7 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
-import { Archaeologist } from "../../../Archaeologist/_archaeologist";
 import { Ansuz, Feoh, Gebo, Raidho } from "../../../Runes/Rune";
+import { Archaeologist } from "../../../Archaeologist/_archaeologist";
 
 /**
  * @title Lea Rheingold Convert
@@ -15,7 +15,7 @@ export class LeaRheingoldConvert implements RuneOperationStrategy {
  * @param rune 
  * @returns The value of the two runes combined.
  */
-    public runeOperation(previousRune: number, rune: Rune, archeologist: Archaeologist): number | string {
+    public runeOperation(previousRune: number, rune: Rune): number | string {
         if (rune instanceof Feoh || rune instanceof Ansuz) {
             return previousRune * rune.decimal;
         } else {
@@ -30,7 +30,8 @@ export class LeaRheingoldConvert implements RuneOperationStrategy {
      * @param runeList 
      * @returns The total value of the runes in the list.
      */
-    public listOperation(runeList: Rune[], archeologist: Archaeologist): number | string {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    public listOperation(runeList: Rune[], archaeologist: Archaeologist): number | string {
         let index = 1;
         let previous = 1;
 
@@ -69,7 +70,7 @@ export class LeaRheingoldConvert implements RuneOperationStrategy {
                 continue;
             }
 
-            current = this.runeOperation(previous, runeList[i], archeologist) as number;
+            current = this.runeOperation(previous, runeList[i]) as number;
 
             previous = current;
             total += current;

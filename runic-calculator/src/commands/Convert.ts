@@ -8,7 +8,6 @@ import { RuneOperationStrategy } from "./Strategy/_runeOperationStrategy";
 
 export class Convert extends RunicOperation {
     private strategy: RuneOperationStrategy;
-    private shouldReverse: boolean = false;
 
     constructor(archeologist: Archaeologist) {
         super();

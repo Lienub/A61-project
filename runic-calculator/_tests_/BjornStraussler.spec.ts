@@ -11,6 +11,6 @@ describe('Bjorn Straussler Class', () => {
         expect(bjorn.getDecimalRune(RunicSymbols.ANSUZ)).toBe(1);
         expect(bjorn.getDecimalRune(RunicSymbols.RAIDHO)).toBe(0);
         expect(bjorn.getDecimalRune(RunicSymbols.GEBO)).toBe(0);
-        expect(bjorn.getDecimalRune('INVALID' as any)).toBe(0);
+        expect(bjorn.getDecimalRune('INVALID' as RunicSymbols)).toBe(0);
     });
 });

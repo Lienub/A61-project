@@ -8,7 +8,7 @@ export class LeaRheingold extends Archaeologist {
     }
 
     public getDecimalRune(runicSymbol: string): number {
-        switch (runicSymbol) {
+        switch (runicSymbol as RunicSymbols) {
             case RunicSymbols.FEOH:
                 return 3;
             case RunicSymbols.URUZ:

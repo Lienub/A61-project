@@ -12,7 +12,7 @@ import { Archaeologist } from "../Archaeologist/_archaeologist";
  * @returns The rune object.
  */
 export function getRune(symbol: string, archaeologist: Archaeologist) : Rune {
-    switch (symbol) {
+    switch (symbol as RunicSymbols) {
         case RunicSymbols.FEOH:
             return new Feoh(archaeologist.getDecimalRune(RunicSymbols.FEOH));
         case RunicSymbols.URUZ:

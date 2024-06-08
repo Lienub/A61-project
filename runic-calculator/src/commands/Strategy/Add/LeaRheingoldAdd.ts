@@ -18,7 +18,7 @@ export class LeaRheingoldAdd implements RuneOperationStrategy {
      * @param runeRight 
      * @returns The combined string of runes.
      */
-    public runeOperation(runeLeft: Rune[], runeRight: Rune[], archeologist: Archaeologist): string {
+    public runeOperation(runeLeft: Rune[], runeRight: Rune[]): string {
         const maxLength = Math.max(runeLeft.length, runeRight.length);
         let mergedRunes = '';
 
@@ -71,6 +71,8 @@ export class LeaRheingoldAdd implements RuneOperationStrategy {
      * @param runeList 
      * @returns The combined string of runes.
      */
+    
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public listOperation(runeList: Rune[][], archeologist: Archaeologist): string {
         let temp = runeList[runeList.length - 1];
         let result = "";
@@ -93,7 +95,7 @@ export class LeaRheingoldAdd implements RuneOperationStrategy {
         }
 
         for (let i = 0; i < runeList.length - 1; i++) {
-            result = this.runeOperation(temp, runeList[i], archeologist);
+            result = this.runeOperation(temp, runeList[i]);
         }
 
         return this.shouldReverse ? result.split('').reverse().join('') : result;
