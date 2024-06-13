@@ -1,6 +1,6 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
-import { Gebo, Raidho, Thurisaz } from "../../../Runes/Rune";
+import { Gebo, Kauna, Raidho, Thurisaz } from "../../../Runes/Rune";
 import { BjornStraussler } from "../../../Archaeologist/BjornStraussler";
 
 /**
@@ -38,6 +38,11 @@ export class DefaultConvert implements RuneOperationStrategy {
             return rune instanceof Raidho;
         });
 
+        // Kormak Clan
+        const runeWithKaunaInstance = runeList.find(rune => {
+            return rune instanceof Kauna;
+        });
+
         // Thorlaug Clan
         const indexOfRuneGebo = runeList.findIndex(rune => rune instanceof Gebo);
         const runeWithGeboInstance = indexOfRuneGebo !== -1 ? runeList[indexOfRuneGebo] : undefined;
@@ -52,6 +57,10 @@ export class DefaultConvert implements RuneOperationStrategy {
             return runeWithGeboInstance.clan.calculateRunes(runeList, new BjornStraussler('bjorn_straussler'));
         }
 
+        // Kormak Clan
+        if (runeWithKaunaInstance && runeWithKaunaInstance.clan) {
+            return runeWithKaunaInstance.clan.calculateRunes(runeList, new BjornStraussler('bjorn_straussler'));
+        }
 
         let total = previous;
 

@@ -1,6 +1,6 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
-import { Gebo, Raidho } from "../../../Runes/Rune";
+import { Gebo, Kauna, Raidho } from "../../../Runes/Rune";
 
 /**
  * @title Lea Rheingold Add
@@ -39,25 +39,12 @@ export class LeaRheingoldAdd implements RuneOperationStrategy {
                 rightRune = runeRight[i]?.text || '';
             }
 
-            if (
-                runeRight[runeRight.length - 2 - i]?.text !== "" &&
-                runeRight[runeRight.length - 2 - i] instanceof Gebo
-            ) {
-                mergedRunes = runeRight[runeRight.length - 2 - i]?.text + rightRune + leftRune + mergedRunes;
-                runeRight.splice(runeRight.length - 2 - i, 1);
-            } else if (
-                runeLeft[runeLeft.length - 2 - i]?.text !== "" &&
-                runeLeft[runeLeft.length - 2 - i] instanceof Gebo
-            ) {
-                mergedRunes = rightRune + runeLeft[runeLeft.length - 2 - i]?.text + leftRune + mergedRunes;
-                runeLeft.splice(runeLeft.length - 2 - i, 1);
-            } else {
-                if (runeWithRaidhoInstance) {
-                    mergedRunes = mergedRunes + leftRune + rightRune;
-                    continue;
-                }
-                mergedRunes = rightRune + leftRune + mergedRunes;
+
+            if (runeWithRaidhoInstance) {
+                mergedRunes = mergedRunes + leftRune + rightRune;
+                continue;
             }
+            mergedRunes = rightRune + leftRune + mergedRunes;
         }
 
         return mergedRunes;
@@ -70,7 +57,7 @@ export class LeaRheingoldAdd implements RuneOperationStrategy {
      * @param runeList 
      * @returns The combined string of runes.
      */
-    
+
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public listOperation(runeList: Rune[][]): string {
         let temp = runeList[runeList.length - 1];

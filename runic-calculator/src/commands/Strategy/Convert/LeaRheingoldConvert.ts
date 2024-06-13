@@ -1,6 +1,7 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
-import { Ansuz, Feoh, Gebo, Raidho } from "../../../Runes/Rune";
+import { Ansuz, Feoh, Gebo, Kauna, Raidho } from "../../../Runes/Rune";
+import { LeaRheingold } from "../../../Archaeologist/LeaRheingold";
 
 /**
  * @title Lea Rheingold Convert
@@ -39,6 +40,11 @@ export class LeaRheingoldConvert implements RuneOperationStrategy {
             return rune instanceof Raidho;
         });
 
+        // Kormak Clan
+        const runeWithKaunaInstance = runeList.find(rune => {
+            return rune instanceof Kauna;
+        });
+
         // Thorlaug Clan
         const indexOfRuneGebo = runeList.findIndex(rune => rune instanceof Gebo);
         const runeWithGeboInstance = indexOfRuneGebo !== -1 ? runeList[indexOfRuneGebo] : undefined;
@@ -48,6 +54,11 @@ export class LeaRheingoldConvert implements RuneOperationStrategy {
             runeList = runeWithRaidhoInstance.clan.adjustRunesConvert(runeList);
             runeList.reverse();
             index = 0;
+        }
+
+        // Kormak Clan
+        if (runeWithKaunaInstance && runeWithKaunaInstance.clan) {
+            return runeWithKaunaInstance.clan.calculateRunes(runeList, new LeaRheingold('lea_rheingold'));
         }
 
         if (runeWithGeboInstance && indexOfRuneGebo == 0) {

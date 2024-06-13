@@ -1,6 +1,6 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
-import { Gebo, Raidho } from "../../../Runes/Rune";
+import { Gebo, Kauna, Raidho } from "../../../Runes/Rune";
 
 /**
  * @title Default Add
@@ -22,8 +22,8 @@ export class DefaultAdd implements RuneOperationStrategy {
 
 
         for (let i = 0; i < maxLength; i++) {
-            const leftRune = runeLeft[runeLeft.length - 1 - i]?.text || '';
-            const rightRune = runeRight[runeRight.length - 1 - i]?.text || '';
+            let leftRune = runeLeft[runeLeft.length - 1 - i]?.text || '';
+            let rightRune = runeRight[runeRight.length - 1 - i]?.text || '';
 
             if (
                 runeRight[runeRight.length - 2 - i]?.text !== "" &&
@@ -38,6 +38,13 @@ export class DefaultAdd implements RuneOperationStrategy {
                 mergedRunes = rightRune + runeLeft[runeLeft.length - 2 - i]?.text + leftRune + mergedRunes;
                 runeLeft.splice(runeLeft.length - 2 - i, 1);
             } else {
+                if(runeLeft[runeLeft.length - 1 - i - 1] instanceof Kauna) {
+                    leftRune = runeLeft[runeLeft.length - 1 - i - 1]?.text + leftRune;
+                    runeLeft.splice(runeLeft.length - 1 - i - 1, 1);
+                } else if(runeRight[runeRight.length - 1 - i - 1] instanceof Kauna) {
+                    rightRune = runeRight[runeRight.length - 1 - i - 1]?.text + rightRune;
+                    runeRight.splice(runeRight.length - 1 - i - 1, 1);
+                }
                 mergedRunes = rightRune + leftRune + mergedRunes;
             }
         }
