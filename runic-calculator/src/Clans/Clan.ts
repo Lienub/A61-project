@@ -1,5 +1,5 @@
 import { Rune } from "../Runes/_rune";
-import { Ansuz, Feoh, Gebo, Kauna, Raidho, Thurisaz } from "../Runes/Rune";
+import { Gebo, Kauna, Raidho, Thurisaz } from "../Runes/Rune";
 import { Clan } from "./_clan";
 import { Archaeologist } from "../Archaeologist/_archaeologist";
 import { DefaultConvert } from "../commands/Strategy/Convert/DefaultConvert";
@@ -95,16 +95,18 @@ export class Thorlaug extends Clan {
 }
 
 export class Kormak extends Clan {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public adjustRunesConvert(runeList: Rune[]): Rune[] {
         throw new Error("Method not implemented.");
     }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     public adjustRunesAdd(runeList: Rune[], temp: Rune[]): Rune[][] {
         throw new Error("Method not implemented.");
     }
     public override calculateRunes(runeList: Rune[], archeologist: Archaeologist): number {
         let previous = 1;
         let total = previous;
-        let values = [previous];
+        const values = [previous];
 
         for (let i = 1; i < runeList.length; i++) {
             let current = 0;

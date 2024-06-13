@@ -1,6 +1,6 @@
 import { RuneOperationStrategy } from "../_runeOperationStrategy";
 import { Rune } from "../../../Runes/_rune";
-import { Gebo, Kauna, Raidho } from "../../../Runes/Rune";
+import { Raidho } from "../../../Runes/Rune";
 
 /**
  * @title Lea Rheingold Add
