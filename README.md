@@ -44,11 +44,18 @@ cd projet-a61/runic-calculator/
 ./runic-calculator.sh convert ᚠᚠᚨᚦ
 
 ./runic-calculator.sh add ᚠᚠᚨᚦ.ᚢᚢ
+
+./runic-calculator.sh --archaeologist=bjorn_straussler convert ᚠᚢᚦᚨᚨ
+./runic-calculator.sh --archaeologist=bjorn_straussler add ᚦ.ᚢ 
+
+./runic-calculator.sh --archaeologist=lea_rheingold convert ᚠᚠᚨᚦᚱ
+./runic-calculator.sh --archaeologist=lea_rheingold add ᚠᚠᚨᚦ.ᚢᚦᚲᚢᚢ
+
 ```
 
 ### Lancer les tests
 ```bash
-# lancer les tests .bats
+# lancer les tests bats
 npm run test
 # lancer les tests unitaires (jest) du dossier _tests_
 nom run test:unit
