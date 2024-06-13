@@ -8,6 +8,9 @@ export abstract class Rune {
     public get decimal(): number {
         return this.value;
     }
+    public set decimal(decimal: number) {
+        this.value = decimal;
+    }
     public abstract get text(): string;
     public abstract get clan(): Clan | null;
 }

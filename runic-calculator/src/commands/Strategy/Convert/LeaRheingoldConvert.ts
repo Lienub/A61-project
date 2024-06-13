@@ -61,6 +61,11 @@ export class LeaRheingoldConvert implements RuneOperationStrategy {
             return runeWithKaunaInstance.clan.calculateRunes(runeList, new LeaRheingold('lea_rheingold'));
         }
 
+        // Thorlaug Clan
+        if (runeWithGeboInstance && runeWithGeboInstance.clan) {
+            return runeWithGeboInstance.clan.calculateRunes(runeList, new LeaRheingold('lea_rheingold'));
+        }
+
         if (runeWithGeboInstance && indexOfRuneGebo == 0) {
             previous = 0;
             index = 0;
