@@ -52,32 +52,33 @@ export class Thorlaug extends Clan {
     }
 
     public override calculateRunes(runeList: Rune[], archeologist: Archaeologist): number {
-
         let previous = 1;
         let total = previous;
         const values = [previous];
-
+    
         for (let i = 1; i < runeList.length; i++) {
             let current = 0;
-            if (runeList[i] instanceof Gebo) {
-                total += values[values.length - 1] + values[values.length - 2];
+    
+            if (archeologist instanceof LeaRheingold && runeList[i] instanceof Gebo) {
+                current = 5;
+                total += current;
                 continue;
             }
-            if (runeList[i - 1] instanceof Gebo) {
-                previous = values[values.length - 1] + values[values.length - 2];
-            }
+    
             if (archeologist instanceof LeaRheingold) {
                 current = new LeaRheingoldConvert().runeOperation(previous, runeList[i]) as number;
             } else {
                 current = new DefaultConvert().runeOperation(previous, runeList[i]) as number;
             }
+    
             previous = current;
             total += current;
             values.push(previous);
         }
-
+    
         return total;
     }
+    
 }
 
 export class Kormak extends Clan {
@@ -95,26 +96,31 @@ export class Kormak extends Clan {
         for (let i = 1; i < runeList.length; i++) {
             let current = 0;
             if (runeList[i + 1] instanceof Kauna) {
-                if (archeologist instanceof LeaRheingold) {
-                    if(runeList[i].decimal % 2 == 0){
-                        current =  3 + runeList[i].decimal;
-                        i+=1;
-                    } else {
-                        current =  4 + runeList[i].decimal;
-                        i+=1;
-                    }
-                } else {
+                if (!(archeologist instanceof LeaRheingold)) {
                     if (runeList[i] instanceof Thurisaz) {
                         current = ((runeList[i].decimal * 2) * values[values.length - 1]);
                     } else {
                         current = ((runeList[i].decimal * 2) + values[values.length - 1]);
                     }
+                    previous = current;
+                    total += current;
+                    i += 1;
+                    continue
                 }
-                previous = current;
-                total += current;
-                i += 1;
-                continue
             }
+            if (archeologist instanceof LeaRheingold && runeList[i] instanceof Kauna) {
+                if (i > 0 && runeList[i - 1] instanceof Rune) {
+                    if (previous % 2 == 0) {
+                        current = 3;
+                    } else {
+                        current = 4;
+                    }
+                    previous = current;
+                    total += current;
+                    continue;
+                }
+            }
+
             if (archeologist instanceof LeaRheingold) {
                 current = new LeaRheingoldConvert().runeOperation(previous, runeList[i]) as number;
             } else {
