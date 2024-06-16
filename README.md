@@ -14,6 +14,10 @@ nombres runiques :
 Cet exercice est purement fictif et ne repose sur aucun fondement
 scientifique ou archéologique
 
+## Rapport de couverture du code
+
+Le [rapport de la couverture du code par les tests](https://projet-a61-abid-wawrzyniak-f97bb124ce673df5f2ca62a428dae91b3c7e.pages.unistra.fr/coverage/index.html)
+
 
 ## Lancer le projet
 
