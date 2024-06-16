@@ -1,0 +1,32 @@
+variables:
+  NODE_ENV: "test"
+
+stages:
+  - test
+  - deploy
+
+image: node:18
+
+cache:
+  paths:
+    - node_modules/
+
+test:
+  stage: test
+  script: 
+    - cd runic-calculator/ && ./build.sh
+    - npx jest --coverage --config=jest.config.ts
+  artifacts:
+    paths:
+      - coverage
+
+pages:
+  stage: deploy
+  script: 
+    - mkdir -p public/coverage
+    - cp -r runic-calculator/coverage/lcov-report/* public/coverage/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
