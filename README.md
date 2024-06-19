@@ -23,8 +23,8 @@ Le [rapport de la couverture du code par les tests](https://projet-a61-abid-wawr
 
 ### Prérequis
 
-- [npm](https://www.npmjs.com/) >= 20.0.0
-- [Node.js](https://nodejs.org/en) >= 10.0.0
+- [npm](https://www.npmjs.com/) >= 10.0.0
+- [Node.js](https://nodejs.org/en) >= 20.0.0
 - [Bats](https://github.com/bats-core/bats-core)
 
 ### Etapes
